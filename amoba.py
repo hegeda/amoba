@@ -6,6 +6,7 @@ j = 'X'
 tbl = {'a1': "", 'a2': "", 'a3': "", 'b1': "", 'b2': "", 'b3': "", 'c1': "", 'c2': "", 'c3': ""}
 vege=False
 nevalt=False
+lep=0
 
 def tabla(mezo, ertek):
     global nevalt
@@ -36,27 +37,31 @@ def tabla(mezo, ertek):
     else:
         print 'Érvénytelen koordináta! Adj újat!'
         nevalt=True
-
-    print tbl['a1'], '|', tbl['a2'], '|', tbl['a3']
-    print tbl['b1'], '|', tbl['b2'], '|', tbl['b3']
-    print tbl['c1'], '|', tbl['c2'], '|', tbl['c3']
+    print '     1   2   3'
+    print 'a   ', tbl['a1'], '|', tbl['a2'], '|', tbl['a3']
+    print 'b   ', tbl['b1'], '|', tbl['b2'], '|', tbl['b3']
+    print 'c   ', tbl['c1'], '|', tbl['c2'], '|', tbl['c3']
+    print '\n'
     return ""
 
 
 def valtas():
     global j
     global nevalt
+    global lep
     if nevalt:
         print j, ' jön'
-        nevalt=False
+        nevalt = False
         return""
     else:
         if j == 'X':
             j = 'O'
             print j, ' jön'
+            lep += 1
         else:
             j = 'X'
             print j, ' jön'
+            lep += 1
     return ""
 
 
@@ -67,29 +72,33 @@ def bevitel():
 
 def ertekel():
     global vege
+    global lep
     if tbl['a1'] <> '-' and tbl['a1'] == tbl['a2'] == tbl['a3']:
-        print 'nyert'
+        print 'Nyert', j
         vege = True
     elif tbl['b1'] <> '-' and tbl['b1'] == tbl['b2'] == tbl['b3']:
-        print 'nyert'
+        print 'Nyert', j
         vege = True
     elif tbl['c1'] <> '-' and tbl['c1'] == tbl['c2'] == tbl['c3']:
-        print 'nyert'
+        print 'Nyert', j
         vege = True
     elif tbl['a1'] <> '-' and tbl['a1'] == tbl['b1'] == tbl['c1']:
-        print 'nyert'
+        print 'Nyert', j
         vege = True
     elif tbl['a2'] <> '-' and tbl['a2'] == tbl['b2'] == tbl['c2']:
-        print 'nyert'
+        print 'Nyert', j
         vege = True
     elif tbl['a3'] <> '-' and tbl['a3'] == tbl['b3'] == tbl['c3']:
-        print 'nyert'
+        print 'Nyert', j
         vege = True
     elif tbl['a1'] <> '-' and tbl['a1'] == tbl['b2'] == tbl['c3']:
-        print 'nyert'
+        print 'Nyert', j
         vege = True
     elif tbl['a3'] <> '-' and tbl['a3'] == tbl['b2'] == tbl['c1']:
-        print 'nyert'
+        print 'Nyert', j
+        vege = True
+    elif lep == 8:
+        print 'Döntetlen'
         vege = True
     else:
         valtas()

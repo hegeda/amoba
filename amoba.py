@@ -1,11 +1,15 @@
 # coding=utf-8
-print ('Amőba játék')
+import os
+
+clear = lambda: os.system('clear')
 j = 'X'
 tbl = {'a1': "", 'a2': "", 'a3': "", 'b1': "", 'b2': "", 'b3': "", 'c1': "", 'c2': "", 'c3': ""}
 vege=False
 
 
 def tabla(mezo, ertek):
+    clear()
+    print ('Amőba játék')
     if mezo == 'I':
         ertek = "-"
         for i in tbl.iterkeys():
@@ -81,12 +85,13 @@ def ertekel():
         vege = True
     else:
         valtas()
+
         return ""
 
 
 
 def tabla_init():
-    print tabla('I', '-')
+    tabla('I', '-')
     vege=False
 
 
@@ -94,4 +99,5 @@ tabla_init()
 while vege==False:
     tabla(bevitel(), j)
     ertekel()
+
 

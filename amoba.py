@@ -53,40 +53,43 @@ def bevitel():
 
 
 def ertekel():
-    if tbl['a1'] == tbl['a2'] == tbl['a3']:
-        print 'nyert'
-        vege=True
-    elif tbl['b1'] == tbl['b2'] == tbl['b3']:
+    global vege
+    if tbl['a1'] <> '-' and tbl['a1'] == tbl['a2'] == tbl['a3']:
         print 'nyert'
         vege = True
-    elif tbl['c1'] == tbl['c2'] == tbl['c3']:
+    elif tbl['b1'] <> '-' and tbl['b1'] == tbl['b2'] == tbl['b3']:
         print 'nyert'
         vege = True
-    elif tbl['a1'] == tbl['b1'] == tbl['c1']:
+    elif tbl['c1'] <> '-' and tbl['c1'] == tbl['c2'] == tbl['c3']:
         print 'nyert'
         vege = True
-    elif tbl['a2'] == tbl['b2'] == tbl['c2']:
+    elif tbl['a1'] <> '-' and tbl['a1'] == tbl['b1'] == tbl['c1']:
         print 'nyert'
         vege = True
-    elif tbl['a3'] == tbl['b3'] == tbl['c3']:
+    elif tbl['a2'] <> '-' and tbl['a2'] == tbl['b2'] == tbl['c2']:
         print 'nyert'
         vege = True
-    elif tbl['a1'] == tbl['b2'] == tbl['c3']:
+    elif tbl['a3'] <> '-' and tbl['a3'] == tbl['b3'] == tbl['c3']:
         print 'nyert'
         vege = True
-    elif tbl['a3'] == tbl['b2'] == tbl['c1']:
+    elif tbl['a1'] <> '-' and tbl['a1'] == tbl['b2'] == tbl['c3']:
+        print 'nyert'
+        vege = True
+    elif tbl['a3'] <> '-' and tbl['a3'] == tbl['b2'] == tbl['c1']:
         print 'nyert'
         vege = True
     else:
-        return ""
+        return False
+
 
 
 def tabla_init():
     print tabla('I', '-')
+    vege=False
 
 
 tabla_init()
-while (vege==False):
+while vege==False:
     tabla(bevitel(), j)
     ertekel()
 

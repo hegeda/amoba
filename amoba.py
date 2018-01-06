@@ -37,14 +37,15 @@ def tabla(mezo, ertek):
     return ""
 
 
-def valtas(valt):
+def valtas():
+    global j
     if j == 'X':
-        valt = 'O'
+        j = 'O'
         print'O jön'
     else:
-        valt = 'X'
+        j = 'X'
         print'X jön'
-    return valt
+    return ""
 
 
 def bevitel():
@@ -79,7 +80,8 @@ def ertekel():
         print 'nyert'
         vege = True
     else:
-        return False
+        valtas()
+        return ""
 
 
 

@@ -5,35 +5,37 @@ clear = lambda: os.system('clear')
 j = 'X'
 tbl = {'a1': "", 'a2': "", 'a3': "", 'b1': "", 'b2': "", 'b3': "", 'c1': "", 'c2': "", 'c3': ""}
 vege=False
-
+nevalt=False
 
 def tabla(mezo, ertek):
+    global nevalt
     clear()
     print ('Amőba játék')
     if mezo == 'I':
         ertek = "-"
         for i in tbl.iterkeys():
             tbl[i] = ertek
-    elif mezo == 'a1':
+    elif mezo == 'a1' and tbl['a1'] == "-":
         tbl['a1'] = ertek
-    elif mezo == 'a2':
-        tbl['a2'] = ertek
-    elif mezo == 'a3':
+    elif mezo == 'a2' and tbl['a2'] == "-":
+        tbl['a2'] =  ertek
+    elif mezo == 'a3' and tbl['a3'] == "-":
         tbl['a3'] = ertek
-    elif mezo == 'b1':
+    elif mezo == 'b1' and tbl['b1'] == "-":
         tbl['b1'] = ertek
-    elif mezo == 'b2':
+    elif mezo == 'b2' and tbl['b2'] == "-":
         tbl['b2'] = ertek
-    elif mezo == 'b3':
+    elif mezo == 'b3' and tbl['b3'] == "-":
         tbl['b3'] = ertek
-    elif mezo == 'c1':
+    elif mezo == 'c1' and tbl['c1'] == "-":
         tbl['c1'] = ertek
-    elif mezo == 'c2':
+    elif mezo == 'c2' and tbl['c2'] == "-":
         tbl['c2'] = ertek
-    elif mezo == 'c3':
+    elif mezo == 'c3' and tbl['c3'] == "-":
         tbl['c3'] = ertek
     else:
         print 'Érvénytelen koordináta! Adj újat!'
+        nevalt=True
 
     print tbl['a1'], '|', tbl['a2'], '|', tbl['a3']
     print tbl['b1'], '|', tbl['b2'], '|', tbl['b3']
@@ -43,12 +45,18 @@ def tabla(mezo, ertek):
 
 def valtas():
     global j
-    if j == 'X':
-        j = 'O'
-        print'O jön'
+    global nevalt
+    if nevalt:
+        print j, ' jön'
+        nevalt=False
+        return""
     else:
-        j = 'X'
-        print'X jön'
+        if j == 'X':
+            j = 'O'
+            print j, ' jön'
+        else:
+            j = 'X'
+            print j, ' jön'
     return ""
 
 
@@ -85,9 +93,7 @@ def ertekel():
         vege = True
     else:
         valtas()
-
-        return ""
-
+        return False
 
 
 def tabla_init():

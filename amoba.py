@@ -127,6 +127,7 @@ def tabla_init():
 
 
 tabla_init()
+print 'X kezd'
 while not vege:
     tabla(bevitel(), j)
     ertekel()

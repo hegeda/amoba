@@ -11,12 +11,15 @@ lep = 0
 
 def tabla(mezo, ertek):
     global nevalt
+    global vege
     clear()
     print ('Amőba játék')
     if mezo == 'I':
         ertek = "-"
         for i in tbl.iterkeys():
             tbl[i] = ertek
+    elif mezo == 'k':
+        quit()
     elif mezo == 'a1' and tbl['a1'] == "-":
         tbl['a1'] = ertek
     elif mezo == 'a2' and tbl['a2'] == "-":
@@ -67,7 +70,7 @@ def valtas():
 
 
 def bevitel():
-    bev = raw_input("Koordináták (pl.: a2, újra: r ): ")
+    bev = raw_input("Koordináták (pl.: a2, k: kilép): ")
     return bev
 
 
@@ -124,6 +127,6 @@ def tabla_init():
 
 
 tabla_init()
-while vege == False:
+while not vege:
     tabla(bevitel(), j)
     ertekel()
